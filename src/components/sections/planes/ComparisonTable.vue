@@ -1,10 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
-// Estado reactivo para controlar si la tabla está visible o no
 const isOpen = ref(false)
 
-// Matriz de datos. True = Check SVG, False = Rayita (-), String = Texto literal
 const tableSections = [
   {
     title: 'Límites de la Cuenta',
@@ -70,7 +68,7 @@ const tableSections = [
         <table class="haylli-clean-table">
           <thead>
             <tr>
-              <th style="width: 28%;"></th>
+              <th style="width: 28%;" class="sticky-col-header"></th>
               <th>
                 <div class="header-card card-inicial">
                   <div class="plan-title">Inicial</div>
@@ -139,13 +137,11 @@ const tableSections = [
 </template>
 
 <style scoped>
-/* Contenedor general */
 .comparison-section {
   width: 100%;
-  padding: 0 20px; /* Previene que el botón toque los bordes en móvil */
+  padding: 0 20px; 
 }
 
-/* --- ESTILOS DEL NUEVO BOTÓN --- */
 .haylli-compare-title-box {
   background: #0070BB; 
   padding: 20px 30px;
@@ -154,8 +150,8 @@ const tableSections = [
   box-shadow: 0 8px 20px rgba(6, 55, 100, 0.15);
   margin: 0 auto 15px auto; 
   max-width: 800px; 
-  cursor: pointer; /* Añadido para indicar que es clickeable */
-  user-select: none; /* Evita que el texto se seleccione al hacer clics rápidos */
+  cursor: pointer; 
+  user-select: none; 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -185,10 +181,9 @@ const tableSections = [
   stroke-linecap: round;
   stroke-linejoin: round;
   animation: bounceDown 2s infinite;
-  transition: transform 0.3s ease; /* Transición para el giro */
+  transition: transform 0.3s ease; 
 }
 
-/* Cuando está abierto: giramos la flecha 180 grados y pausamos el rebote */
 .haylli-compare-title-box svg.rotated {
   transform: rotate(180deg);
   animation: none; 
@@ -200,13 +195,6 @@ const tableSections = [
   60% { transform: translateY(2px); }
 }
 
-@media (max-width: 768px) {
-  .haylli-compare-title-box { padding: 15px 20px; }
-  .haylli-compare-title-box h2 { font-size: 20px; }
-  .haylli-compare-title-box svg { width: 20px; height: 20px; }
-}
-
-/* --- TRANSICIÓN SUAVE PARA LA TABLA --- */
 .fade-slide-enter-active,
 .fade-slide-leave-active {
   transition: all 0.4s ease-out;
@@ -220,10 +208,11 @@ const tableSections = [
   transform: translateY(-20px);
 }
 
-/* --- ESTILOS DE LA TABLA (Ya existentes) --- */
+/* --- ESTILOS DE LA TABLA --- */
 .haylli-clean-wrapper {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
   padding: 20px 40px; 
   max-width: 1200px; 
   margin: 0 auto;
@@ -231,14 +220,15 @@ const tableSections = [
 
 .haylli-clean-table {
   width: 100%;
-  min-width: 900px;
-  border-collapse: collapse;
+  min-width: 900px; 
+  border-collapse: separate; 
+  border-spacing: 0;
 }
 
 .haylli-clean-table th, 
 .haylli-clean-table td {
   padding: 18px 15px;
-  border-bottom: 1px solid var(--h-border);
+  border-bottom: 1px solid var(--h-border, #e2e8f0);
   color: #334155;
   font-size: 14px;
   vertical-align: middle;
@@ -264,7 +254,7 @@ const tableSections = [
 }
 
 .card-inicial, .card-ejecutivo, .card-corporativo { background: transparent; }
-.card-emprendedor { background: var(--h-blue-primary); }
+.card-emprendedor { background: var(--h-blue-primary, #0070BB); }
 
 .card-emprendedor .plan-title, 
 .card-emprendedor .p-amount, 
@@ -282,7 +272,7 @@ const tableSections = [
   white-space: nowrap;
 }
 
-.plan-title { font-size: 16px; font-weight: 800; color: var(--h-blue-primary); letter-spacing: 0.5px; }
+.plan-title { font-size: 16px; font-weight: 800; color: var(--h-blue-primary, #0070BB); letter-spacing: 0.5px; }
 
 .plan-price-wrap { 
   display: flex; 
@@ -291,11 +281,24 @@ const tableSections = [
   gap: 6px; 
 }
 
-.p-amount { font-size: 28px; font-weight: 800; color: var(--h-navy); line-height: 1; }
-.p-sub-price { font-size: 12px; color: var(--h-blue-primary); }
+.p-amount { font-size: 28px; font-weight: 800; color: var(--h-navy, #063764); line-height: 1; }
+.p-sub-price { font-size: 12px; color: var(--h-blue-primary, #0070BB); }
 
-.col-feat { text-align: left !important; width: 28%; }
-.cat-title { text-align: left !important; font-size: 22px; font-weight: 700; color: var(--h-navy); padding-top: 50px !important; padding-bottom: 15px !important; border-bottom: none !important; }
+.col-feat { 
+  text-align: left !important; 
+  width: 28%; 
+  background-color: #ffffff;
+}
+
+.cat-title { 
+  text-align: left !important; 
+  font-size: 22px; 
+  font-weight: 700; 
+  color: var(--h-navy, #063764); 
+  padding-top: 50px !important; 
+  padding-bottom: 15px !important; 
+  border-bottom: none !important; 
+}
 
 .center-data { text-align: center !important; }
 .center-data svg { display: block; margin: 0 auto; }
@@ -306,8 +309,42 @@ const tableSections = [
 .haylli-clean-table tbody:last-child tr:last-child td { border-bottom: none; }
 
 @media (max-width: 768px) {
+  .haylli-compare-title-box { padding: 15px 20px; }
+  .haylli-compare-title-box h2 { font-size: 20px; }
+  .haylli-compare-title-box svg { width: 20px; height: 20px; }
+
   .haylli-clean-wrapper {
-    padding: 20px 20px; 
+    padding: 10px 0; 
+  }
+
+  .haylli-clean-table th, 
+  .haylli-clean-table td {
+    padding: 15px 10px; 
+  }
+
+  .header-card {
+    padding: 15px 10px; 
+  }
+  
+  .p-amount {
+    font-size: 22px; 
+  }
+
+  .sticky-col-header,
+  .col-feat {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background-color: #ffffff;
+  }
+
+  .col-feat {
+    box-shadow: 4px 0 8px -4px rgba(0,0,0,0.1);
+  }
+
+  .cat-title {
+    font-size: 18px !important; 
+    padding-top: 30px !important;
   }
 }
 </style>

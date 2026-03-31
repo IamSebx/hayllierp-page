@@ -1,38 +1,35 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-// Definimos la estructura de cada pregunta
 interface FAQ {
   question: string;
   answer: string;
   isOpen: boolean;
 }
 
-// Estado reactivo con las preguntas y respuestas
 const faqs = ref<FAQ[]>([
   {
     question: '¿Puedo cambiar de plan?',
     answer: 'Sí, puedes cambiar de plan al finalizar el mes de contrato. Sólo comunícate con el área de soporte <a href="https://wa.me/51938648117" class="faq-link" target="_blank">wa.me/51938648117</a>',
-    isOpen: false // <--- Cambiado a false
+    isOpen: false
   },
   {
     question: '¿Qué forma de pago aceptan?',
     answer: 'Aceptamos transferencias directas entre bancos, billeteras móviles como YAPE, PLIN. Para los pagos de un <strong>Plan Anual</strong>, se puede pagar el 50% al realizar el contrato y el 50% restante en los 30 días siguientes.',
-    isOpen: false // <--- Cambiado a false
+    isOpen: false 
   },
   {
     question: 'Si deseo sólo un módulo o funcionalidad adicional, ¿Debo cambiar de plan?',
     answer: 'No, no es necesario cambiar de plan, se agregaría solo un monto adicional, sin embargo, es posible que otro plan te pueda brindar más beneficios.',
-    isOpen: false // <--- Cambiado a false
+    isOpen: false
   },
   {
     question: '¿Cómo funciona el Plan de Referidos?',
     answer: 'Si ya eres parte de la familia <strong>HAYLLI</strong>, puedes recomendar el sistema y por cada venta que logre concretarse puedes obtener un <strong>30%</strong> del plan contratado. *Aplican términos y condiciones, para mayor información comunicarse con el área de soporte <a href="https://wa.me/51938648117" class="faq-link" target="_blank">wa.me/51938648117</a>',
-    isOpen: false // <--- Cambiado a false
+    isOpen: false
   }
 ])
 
-// Función para abrir/cerrar un acordeón
 const toggleFaq = (index: number) => {
   faqs.value[index].isOpen = !faqs.value[index].isOpen
 }
@@ -69,9 +66,8 @@ const toggleFaq = (index: number) => {
 </template>
 
 <style scoped>
-/* --- FONDO Y CONTENEDOR PRINCIPAL --- */
 .haylli-faq-wrapper {
-  background-color: #f4f5f7; /* Gris muy claro, como en tu imagen */
+  background-color: #f4f5f7; 
   padding: 60px 20px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -89,7 +85,6 @@ const toggleFaq = (index: number) => {
   text-align: left;
 }
 
-/* --- GRID DE 2 COLUMNAS --- */
 .haylli-faq-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -97,7 +92,6 @@ const toggleFaq = (index: number) => {
   align-items: start;
 }
 
-/* --- TARJETAS DE PREGUNTAS --- */
 .faq-item {
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
@@ -129,7 +123,6 @@ const toggleFaq = (index: number) => {
   line-height: 1.4;
 }
 
-/* --- ÍCONO DEL CÍRCULO AZUL --- */
 .faq-icon {
   min-width: 24px;
   height: 24px;
@@ -145,7 +138,6 @@ const toggleFaq = (index: number) => {
   transition: transform 0.3s ease;
 }
 
-/* --- ANIMACIÓN DEL ACORDEÓN --- */
 .faq-answer-wrapper {
   display: grid;
   grid-template-rows: 0fr;
@@ -168,7 +160,6 @@ const toggleFaq = (index: number) => {
   line-height: 1.6;
 }
 
-/* --- ESTILOS PARA LOS ENLACES DENTRO DE LA RESPUESTA --- */
 :deep(.faq-link) {
   color: #94a3b8;
   text-decoration: underline;

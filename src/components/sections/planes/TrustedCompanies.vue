@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// Rutas absolutas a la carpeta public. Vite las resolverá automáticamente.
 const companies = [
   { id: 1, name: 'Empresa 1', src: '/logos/logo1.png' },
   { id: 2, name: 'Empresa 2', src: '/logos/logo2.png' },
@@ -60,7 +59,7 @@ const companies = [
   border-bottom: 1px solid #f1f5f9;
   font-family: 'Open Sans', sans-serif;
   overflow: hidden; 
-  pointer-events: none; /* NUEVO: Desactiva TODOS los eventos de mouse en la sección completa */
+  pointer-events: none;
 }
 
 .trusted-container {
@@ -88,7 +87,7 @@ const companies = [
   margin: 0;
 }
 
-/* --- ENVOLTORIO DEL CARRUSEL --- */
+
 .carousel-wrapper {
   flex-grow: 1;
   overflow: hidden;
@@ -96,15 +95,14 @@ const companies = [
   -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-/* --- LA PISTA QUE SE MUEVE --- */
 .carousel-track {
   display: flex;
   width: fit-content;
   animation: scrollInfinite 30s linear infinite;
-  /* ELIMINADO: El hover que pausaba la animación */
+
 }
 
-/* --- GRUPO DE LOGOS --- */
+
 .logo-group {
   display: flex;
   align-items: center;
@@ -112,7 +110,6 @@ const companies = [
   padding-right: 70px; 
 }
 
-/* --- ESTILO DE CADA LOGO --- */
 .logo-item {
   max-height: 50px;
   max-width: 160px;
@@ -120,7 +117,7 @@ const companies = [
   filter: grayscale(100%) opacity(0.6);
 }
 
-/* --- ANIMACIÓN CSS --- */
+
 @keyframes scrollInfinite {
   0% {
     transform: translateX(0);
@@ -130,7 +127,7 @@ const companies = [
   }
 }
 
-/* --- RESPONSIVE MOBILE --- */
+
 @media (max-width: 900px) {
   .trusted-container {
     flex-direction: column;

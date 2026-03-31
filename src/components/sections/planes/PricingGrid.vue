@@ -97,7 +97,7 @@ const plans: Plan[] = [
   padding: 20px 0;
 }
 
-/* --- ESTILOS DEL SWITCH (TOGGLE) --- */
+
 .toggle-container {
   display: flex;
   justify-content: center;
@@ -158,7 +158,6 @@ const plans: Plan[] = [
   vertical-align: text-bottom;
 }
 
-/* --- ESTILOS DE LA GRID --- */
 .pricing-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 0 10px 40px 10px; }
 .p-card { border: 1px solid var(--h-border); border-radius: 20px; padding: 35px 25px; width: 260px; text-align: center; display: flex; flex-direction: column; position: relative; transition: 0.3s; }
 .p-card:nth-child(1) { background: var(--bg-card-inicial); }
@@ -169,14 +168,14 @@ const plans: Plan[] = [
 .badge-popular { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); background: var(--h-navy); color: white; padding: 6px 20px; border-radius: 50px; font-weight: bold; white-space: nowrap; }
 .price-display { font-size: 34px; font-weight: 800; color: var(--h-navy); margin-top: 15px;}
 
-/* --- ESTILOS DEL SUB-PRECIO MODIFICADOS --- */
+
 .sub-price { 
   margin: 5px 0 20px 0; 
   display: flex; 
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 44px; /* Aumentado para que no salte al aparecer las 2 líneas */
+  min-height: 44px;
   color: var(--h-blue-primary); 
   font-size: 14px; 
   font-weight: 700; 
@@ -188,7 +187,7 @@ const plans: Plan[] = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px; /* Espacio entre la palabra Anual y la píldora */
+  gap: 4px;
 }
 
 .period-text {
@@ -208,7 +207,6 @@ const plans: Plan[] = [
   letter-spacing: 0.5px;
 }
 
-/* Badge de ahorro en tarjeta azul */
 .p-card.featured .resaltado-ahorro {
   background-color: #ffffff;
   color: var(--h-blue-primary);
