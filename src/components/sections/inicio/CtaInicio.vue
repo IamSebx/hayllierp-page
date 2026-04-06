@@ -10,7 +10,7 @@
         Explora las funcionalidades de nuestro ERP en tu negocio y comienza a optimizar tus procesos para maximizar tus ingresos.
       </p>
       
-      <p class="price">Desde <strong>S/. 39,00</strong></p>
+      <p class="price">Desde <strong>S/. 59,00</strong></p>
       
       <div class="action-buttons">
         <router-link to="/planes" class="btn-primary-solid">Más información</router-link>
