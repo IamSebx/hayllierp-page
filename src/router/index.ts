@@ -8,18 +8,35 @@ const router = createRouter({
     {
       path: '/',
       name: 'inicio',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        title: 'Inicia Hoy - HaylliERP'
+      }
     },
     {
       path: '/planes',
       name: 'planes',
-      component: PlanesView
+      component: PlanesView,
+      meta: {
+        title: 'Planes - HaylliERP'
+      }
     }
   ],
-  // Esto hace que al cambiar de página, el scroll vuelva arriba automáticamente
   scrollBehavior() {
     return { top: 0 }
   }
+})
+
+router.beforeEach((to, _from, next) => {
+  const pageTitle = to.meta.title as string;
+  
+  if (pageTitle) {
+    document.title = pageTitle;
+  } else {
+    document.title = 'Haylli ERP';
+  }
+  
+  next();
 })
 
 export default router

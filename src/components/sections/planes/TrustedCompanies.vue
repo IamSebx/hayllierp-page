@@ -70,7 +70,6 @@ const companies = [
   gap: 40px;
 }
 
-/* --- TEXTO FIJO --- */
 .trusted-text {
   flex-shrink: 0;
   width: 180px;

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// No se requiere lógica reactiva para este footer estático
 </script>
 
 <template>

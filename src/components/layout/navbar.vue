@@ -74,14 +74,14 @@ const isMenuOpen = ref(false)
   background-color: var(--h-blue-primary, #0070BB);
   width: 100%;
   
-  /* CAMBIO A FIXED */
+
   position: fixed; 
   top: 0; 
-  left: 0; /* Asegura que se pegue al borde izquierdo */
+  left: 0;
   
-  z-index: 9999; /* Lo subimos para que NADA lo tape */
+  z-index: 9999; 
   font-family: 'Open Sans', sans-serif;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombrita elegante para separarlo del fondo */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
@@ -93,18 +93,17 @@ const isMenuOpen = ref(false)
   padding: 15px 20px;
 }
 
-/* --- LOGO NUEVO ESTILO --- */
+
 .nav-logo {
   z-index: 1001; 
 }
 .logo-img {
-  height: 40px; /* Ajusta este valor si el logo se ve muy chico o muy grande */
+  height: 40px;
   width: auto;
   object-fit: contain;
-  display: block; /* Elimina márgenes extra fantasma debajo de la imagen */
+  display: block; 
 }
 
-/* ... Mantén todo el resto del CSS de tu menú hamburguesa y responsivo que ya tenías ... */
 
 .menu-toggle {
   display: none;
@@ -124,12 +123,11 @@ const isMenuOpen = ref(false)
   transition: all 0.3s ease;
 }
 
-/* Animación del botón cuando está abierto (Forma una 'X') */
+
 .bar-1 { transform: translateY(8px) rotate(45deg); }
 .bar-2 { opacity: 0; }
 .bar-3 { transform: translateY(-8px) rotate(-45deg); }
 
-/* --- LISTA DE NAVEGACIÓN (Escritorio) --- */
 .nav-list {
   display: flex;
   list-style: none;
@@ -152,7 +150,6 @@ const isMenuOpen = ref(false)
 
 .arrow { font-size: 10px; margin-left: 4px; vertical-align: middle; }
 
-/* --- DROPDOWN NIVEL 1 --- */
 .dropdown { position: relative; padding: 10px 0; }
 .dropdown-menu {
   position: absolute;
@@ -175,7 +172,6 @@ const isMenuOpen = ref(false)
   transform: translateY(0);
 }
 
-/* --- ENLACES DENTRO DEL DROPDOWN --- */
 .drop-link {
   color: #ffffff;
   text-decoration: none;
@@ -189,7 +185,6 @@ const isMenuOpen = ref(false)
 .d-flex-between { display: flex; justify-content: space-between; align-items: center; }
 .arrow-right { font-size: 10px; opacity: 0.8; }
 
-/* --- DROPDOWN NIVEL 2 --- */
 .sub-dropdown { position: relative; }
 .sub-dropdown-menu {
   position: absolute;
@@ -212,14 +207,10 @@ const isMenuOpen = ref(false)
   transform: translateX(0);
 }
 
-/* ========================================= */
-/* RESPONSIVE (Móviles y Tablets)      */
-/* ========================================= */
+
 @media (max-width: 992px) {
-  /* Mostrar el botón hamburguesa */
   .menu-toggle { display: flex; }
 
-  /* Ocultar el menú por defecto y prepararlo para desplegarse hacia abajo */
   .nav-menu {
     position: absolute;
     top: 100%;
@@ -228,19 +219,16 @@ const isMenuOpen = ref(false)
     background-color: var(--h-blue-primary, #0070BB);
     box-shadow: 0 10px 15px rgba(0,0,0,0.1);
     
-    /* Efecto acordeón */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-in-out;
   }
 
-  /* Cuando se hace clic en la hamburguesa, el menú se expande */
   .nav-menu.open {
-    max-height: 100vh; /* Permite que el menú se despliegue por completo */
+    max-height: 100vh;
     overflow-y: auto;
   }
 
-  /* Cambiar a lista vertical */
   .nav-list {
     flex-direction: column;
     align-items: flex-start;
@@ -255,7 +243,6 @@ const isMenuOpen = ref(false)
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* --- ADAPTACIÓN DE LOS DROPDOWNS PARA MÓVIL --- */
   .dropdown { padding: 0; width: 100%; }
   
   .dropdown-menu, .sub-dropdown-menu {
@@ -265,8 +252,6 @@ const isMenuOpen = ref(false)
     visibility: visible;
     transform: none;
     background-color: rgba(0, 0, 0, 0.05); 
-    
-    /* Ocultos por defecto tipo acordeón */
     max-height: 0;
     overflow: hidden;
     padding: 0;
@@ -274,7 +259,6 @@ const isMenuOpen = ref(false)
     transition: max-height 0.3s ease;
   }
 
-  /* Al hacer "tap" en el celular, se despliegan hacia abajo */
   .dropdown:hover .dropdown-menu,
   .sub-dropdown:hover .sub-dropdown-menu {
     max-height: 500px; 
@@ -285,7 +269,6 @@ const isMenuOpen = ref(false)
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
   
-  /* Ajuste visual para el submenú en móvil */
   .sub-dropdown-menu .drop-link {
     padding-left: 40px; 
   }
