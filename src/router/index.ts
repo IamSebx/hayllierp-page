@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PlanesView from '../views/PlanesView.vue'
+import FacturacionView from '../views/FacturacionView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -19,6 +20,14 @@ const router = createRouter({
       component: PlanesView,
       meta: {
         title: 'Planes - HaylliERP'
+      }
+    },
+    {
+      path: '/facturacion-electronica',
+      name: 'facturacion-electronica',
+      component: FacturacionView,
+      meta: {
+        title: 'Facturación Electrónica - HaylliERP'
       }
     }
   ],

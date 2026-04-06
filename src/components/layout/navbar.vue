@@ -3,6 +3,8 @@ import { ref } from 'vue'
 
 import logoBlanco from '../../assets/haylli-blanco.png' 
 const isMenuOpen = ref(false)
+const isSolucionesOpen = ref(false)
+const isGestionOpen = ref(false)
 </script>
 
 <template>
@@ -25,34 +27,30 @@ const isMenuOpen = ref(false)
         <ul class="nav-list">
           <li><router-link to="/" class="nav-link" active-class="active">Inicio</router-link></li>
           
-          <li class="dropdown">
-            <a href="#" class="nav-link">Soluciones <span class="arrow">▼</span></a>
+          <li class="dropdown" :class="{ 'is-open-mobile': isSolucionesOpen }">
+            <a href="#" class="nav-link" @click.prevent="isSolucionesOpen = !isSolucionesOpen">
+              Soluciones <span class="arrow">▼</span>
+            </a>
             
             <ul class="dropdown-menu">
-              <li><a href="#" class="drop-link">Facturación electrónica</a></li>
+              <li><router-link to="/facturacion-electronica" class="drop-link" active-class="active">Facturación electrónica</router-link></li>
               
-              <li class="sub-dropdown">
-                <a href="#" class="drop-link d-flex-between">
+              <li class="sub-dropdown" :class="{ 'is-open-mobile': isGestionOpen }">
+                <a href="#" class="drop-link d-flex-between" @click.prevent="isGestionOpen = !isGestionOpen">
                   Gestión empresarial <span class="arrow-right">▶</span>
                 </a>
                 
                 <ul class="sub-dropdown-menu">
                   <li><a href="#" class="drop-link">Inventario</a></li>
                   <li><a href="#" class="drop-link">Guías de remisión</a></li>
-                  <li><a href="#" class="drop-link">Compras</a></li>
-                  <li><a href="#" class="drop-link">Ventas</a></li>
-                  <li><a href="#" class="drop-link">Finanzas</a></li>
-                  <li><a href="#" class="drop-link">Contabilidad</a></li>
-                </ul>
+                  </ul>
               </li>
               
               <li><a href="#" class="drop-link">Punto de venta</a></li>
               <li><a href="#" class="drop-link">Tienda online</a></li>
               
               <li class="sub-dropdown">
-                <a href="#" class="drop-link d-flex-between">
-                  RESELL <span class="arrow-right">▼</span>
-                </a>
+                <a href="#" class="drop-link d-flex-between">RESELL <span class="arrow-right">▼</span></a>
               </li>
             </ul>
           </li>
@@ -181,6 +179,12 @@ const isMenuOpen = ref(false)
   padding: 12px 25px;
   transition: background-color 0.2s;
 }
+.drop-link.active {
+  background-color: rgba(255, 255, 255, 0.15); 
+  font-weight: 800;
+  border-left: 4px solid #ffffff; 
+  padding-left: 21px; 
+}
 .drop-link:hover { background-color: rgba(255, 255, 255, 0.1); }
 .d-flex-between { display: flex; justify-content: space-between; align-items: center; }
 .arrow-right { font-size: 10px; opacity: 0.8; }
@@ -259,14 +263,34 @@ const isMenuOpen = ref(false)
     transition: max-height 0.3s ease;
   }
 
-  .dropdown:hover .dropdown-menu,
-  .sub-dropdown:hover .sub-dropdown-menu {
+  .dropdown.is-open-mobile > .dropdown-menu,
+  .sub-dropdown.is-open-mobile > .sub-dropdown-menu {
     max-height: 500px; 
+  }
+
+
+  .dropdown.is-open-mobile > .nav-link .arrow {
+    transform: rotate(180deg);
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  .sub-dropdown.is-open-mobile > .drop-link .arrow-right {
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
   }
 
   .drop-link {
     padding: 12px 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .drop-link.active {
+    padding-left: 16px; /* Original era 20px, le restamos los 4px del borde */
+  }
+  
+  .sub-dropdown-menu .drop-link.active {
+    padding-left: 36px; /* Original era 40px, le restamos los 4px del borde */
   }
   
   .sub-dropdown-menu .drop-link {
