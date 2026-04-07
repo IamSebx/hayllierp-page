@@ -41,13 +41,13 @@ const isGestionOpen = ref(false)
                 </a>
                 
                 <ul class="sub-dropdown-menu">
-                  <li><a href="#" class="drop-link">Inventario</a></li>
+                  <li><router-link to="/inventario" class="drop-link" active-class="active">Inventario</router-link></li>
                   <li><a href="#" class="drop-link">Guías de remisión</a></li>
                   </ul>
               </li>
               
-              <li><a href="#" class="drop-link">Punto de venta</a></li>
-              <li><a href="#" class="drop-link">Tienda online</a></li>
+              <li><router-link to="/pos" class="drop-link" active-class="active">Punto de venta</router-link></li>
+              <li><router-link to="/tienda-online" class="drop-link" active-class="active">Tienda online</router-link></li>
               
               <li class="sub-dropdown">
                 <a href="#" class="drop-link d-flex-between">RESELL <span class="arrow-right">▼</span></a>
@@ -56,8 +56,7 @@ const isGestionOpen = ref(false)
           </li>
           
           <li><router-link to="/planes" class="nav-link" active-class="active">Planes</router-link></li>
-          <li><a href="#" class="nav-link">Blog</a></li>
-          <li><a href="#" class="nav-link">Eventos</a></li>
+          <li><router-link to="/blog" class="nav-link" active-class="active">Blog</router-link></li>
           <li><a href="#" class="nav-link">Contacto</a></li>
           <li><a href="#" class="nav-link nav-btn">Agendar demo</a></li>
         </ul>

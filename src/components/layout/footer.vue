@@ -41,17 +41,11 @@
         <div class="footer-col">
           <h4>Soluciones</h4>
           <ul class="link-list">
-            <li><a href="#" class="footer-link">Facturación electrónica</a></li>
-            <li><a href="#" class="footer-link">Inventario</a></li>
-            <li><a href="#" class="footer-link">Guías de remisión</a></li>
-            <li><a href="#" class="footer-link">Compras</a></li>
-            <li><a href="#" class="footer-link">Ventas</a></li>
-            <li><a href="#" class="footer-link">Contabilidad</a></li>
-            <li><a href="#" class="footer-link">Finanzas</a></li>
-            <li><a href="#" class="footer-link">Punto de venta</a></li>
-            <li><a href="#" class="footer-link">Tienda online</a></li>
-            <li><a href="#" class="footer-link">RESELL PSE, OSE</a></li>
-            <li><a href="#" class="footer-link">Planes</a></li>
+            <li><router-link to="/facturacion-electronica" class="footer-link">Facturación electrónica</router-link></li>
+            <li><router-link to="/inventario" class="footer-link">Inventario</router-link></li>
+            <li><router-link to="/pos" class="footer-link">Punto de venta</router-link></li>
+            <li><router-link to="/tienda-online" class="footer-link">Tienda online</router-link></li>
+            <li><router-link to="/planes" class="footer-link">Planes</router-link></li>
           </ul>
         </div>
 
@@ -59,10 +53,10 @@
           <h4>Enlaces Útiles</h4>
           <ul class="link-list">
             <li><a href="#" class="footer-link">Centro de ayuda</a></li>
-            <li><a href="#" class="footer-link">Blog</a></li>
+            <li><router-link to="/blog" class="footer-link">Blog</router-link></li>
             <li><a href="#" class="footer-link">Términos y condiciones</a></li>
             <li><a href="#" class="footer-link">Eventos</a></li>
-            <li><a href="#" class="footer-link">Tutoriales</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLQZTqnX2T2Prh3hqhU7k0zBTUM2DrVoEb" target="_blank" rel="noopener" class="footer-link">Tutoriales</a></li>
             <li><a href="#" class="footer-link">Contacto</a></li>
             <br>
             <li><a href="#" class="footer-link">Demostración Gratis</a></li>
@@ -108,7 +102,7 @@
 
 <style scoped>
 .haylli-footer {
-  background-color: #004E98; /* Azul profundo basado en la imagen */
+  background-color: #004E98; 
   color: #ffffff;
   padding: 60px 20px 30px 20px;
   font-family: 'Open Sans', sans-serif;
@@ -120,7 +114,6 @@
   margin: 0 auto;
 }
 
-/* --- GRID DE 4 COLUMNAS --- */
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -128,7 +121,6 @@
   margin-bottom: 50px;
 }
 
-/* --- TIPOGRAFÍA Y BLOQUES --- */
 .footer-col h4 {
   font-size: 16px;
   font-weight: 700;
@@ -150,7 +142,7 @@
 .footer-col p, 
 .contact-list li {
   font-size: 14px;
-  color: #B3D4F0; /* Texto celeste claro para contraste */
+  color: #B3D4F0;
   line-height: 1.6;
   margin: 0;
 }
@@ -191,7 +183,6 @@
   color: #ffffff !important;
 }
 
-/* --- BOTTOM SECTION (SOCIAL & COPYRIGHT) --- */
 .footer-bottom {
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -212,7 +203,7 @@
   width: 35px;
   height: 35px;
   background-color: #ffffff;
-  color: #004E98; /* El icono toma el color azul del fondo */
+  color: #004E98;
   border-radius: 50%;
   text-decoration: none;
   transition: transform 0.3s ease, background-color 0.3s ease;
