@@ -52,14 +52,12 @@
         <div class="footer-col">
           <h4>Enlaces Útiles</h4>
           <ul class="link-list">
-            <li><a href="#" class="footer-link">Centro de ayuda</a></li>
             <li><router-link to="/blog" class="footer-link">Blog</router-link></li>
             <li><a href="#" class="footer-link">Términos y condiciones</a></li>
-            <li><a href="#" class="footer-link">Eventos</a></li>
             <li><a href="https://www.youtube.com/playlist?list=PLQZTqnX2T2Prh3hqhU7k0zBTUM2DrVoEb" target="_blank" rel="noopener" class="footer-link">Tutoriales</a></li>
-            <li><a href="#" class="footer-link">Contacto</a></li>
+            <li><a href="https://wa.me/51938648117?text=Hola,%20quiero%20ayuda" target="_blank" rel="noopener" class="footer-link">Contacto</a></li>
             <br>
-            <li><a href="#" class="footer-link">Demostración Gratis</a></li>
+            <li><router-link to="/contacto" class="footer-link">Demostración Gratis</router-link></li>
           </ul>
         </div>
 
@@ -67,10 +65,10 @@
           <h4>Creamos Marca</h4>
           <p class="brand-subtitle">Haylli es un producto de "Creamos Marca"</p>
           <ul class="link-list">
-            <li><a href="#" class="footer-link">¿Quienes somos?</a></li>
-            <li><a href="#" class="footer-link">Trabaja con nosotros</a></li>
-            <li><a href="#" class="footer-link">Servicios</a></li>
-            <li><a href="#" class="footer-link">Productos</a></li>
+            <li><a href="https://creamosmarcati.com/sobre-creamos-marca/"  target="_blank" rel="noopener" class="footer-link">¿Quienes somos?</a></li>
+            <li><a href="https://www.linkedin.com/company/hayllierp" target="_blank" rel="noopener" class="footer-link">Trabaja con nosotros</a></li>
+            <li><a href="https://creamosmarcati.com/servicios/" target="_blank" rel="noopener" class="footer-link">Servicios</a></li>
+            <li><a href="https://creamosmarcati.com/recursos-productos/" target="_blank" rel="noopener" class="footer-link">Productos</a></li>
           </ul>
         </div>
       </div>

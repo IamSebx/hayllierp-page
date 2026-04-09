@@ -1,9 +1,13 @@
 <script setup lang="ts">
-// 1. IMPORTA TUS IMÁGENES AQUÍ
+import { useRouter } from 'vue-router' // 1. Importamos el router
+
+// IMPORTA TUS IMÁGENES AQUÍ
 import imgVentas from '../../../assets/Dashboard.png'
 import imgInventario from '../../../assets/imgInventario.png'
 import imgGuias from '../../../assets/GRE.gif'
 import imgCompras from '../../../assets/ComprasFinanzas.png'
+
+const router = useRouter() // 2. Instanciamos el router para usarlo en el template
 
 const features = [
   {
@@ -86,8 +90,8 @@ const features = [
           </ul>
 
           <div class="action-buttons">
-            <button class="btn-primary-solid">Más información</button>
-            <button class="btn-outline">Agendar Demo Gratis</button>
+            <button class="btn-primary-solid" @click="router.push('/planes')">Más información</button>
+            <button class="btn-outline" @click="router.push('/contacto')">Agendar Demo Gratis</button>
           </div>
         </div>
 

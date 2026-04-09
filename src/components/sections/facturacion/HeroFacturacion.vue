@@ -1,7 +1,9 @@
 <script setup lang="ts">
-// 1. IMPORTA TU IMAGEN REAL AQUÍ
-// Asumiendo que guardaste la imagen de la captura en assets
+import { useRouter } from 'vue-router' // 1. Importamos el router
+
 import imgLaptop from '../../../assets/laptop-haylli.png'
+
+const router = useRouter() // 2. Instanciamos el router
 </script>
 
 <template>
@@ -12,8 +14,8 @@ import imgLaptop from '../../../assets/laptop-haylli.png'
         <h1>Olvídate del papel<br><span class="highlight">¡Factura en un clic!</span></h1>
         <p>Ahorra tiempo y dinero emitiendo comprobantes al instante ¡Vende más en menos tiempo!</p>
         <div class="action-buttons">
-          <button class="btn-outline-white">Más información</button>
-          <button class="btn-primary-white">Demostración Gratis</button>
+          <button class="btn-outline-white" @click="router.push('/planes')">Más información</button>
+          <button class="btn-primary-white" @click="router.push('/contacto')">Demostración Gratis</button>
         </div>
       </div>
 

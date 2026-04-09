@@ -42,23 +42,18 @@ const isGestionOpen = ref(false)
                 
                 <ul class="sub-dropdown-menu">
                   <li><router-link to="/inventario" class="drop-link" active-class="active">Inventario</router-link></li>
-                  <li><a href="#" class="drop-link">Guías de remisión</a></li>
                   </ul>
               </li>
               
               <li><router-link to="/pos" class="drop-link" active-class="active">Punto de venta</router-link></li>
               <li><router-link to="/tienda-online" class="drop-link" active-class="active">Tienda online</router-link></li>
               
-              <li class="sub-dropdown">
-                <a href="#" class="drop-link d-flex-between">RESELL <span class="arrow-right">▼</span></a>
-              </li>
             </ul>
           </li>
           
           <li><router-link to="/planes" class="nav-link" active-class="active">Planes</router-link></li>
           <li><router-link to="/blog" class="nav-link" active-class="active">Blog</router-link></li>
-          <li><a href="#" class="nav-link">Contacto</a></li>
-          <li><a href="#" class="nav-link nav-btn">Agendar demo</a></li>
+          <li><router-link to="/contacto" class="nav-link" active-class="active">Contacto</router-link></li>
         </ul>
       </nav>
 

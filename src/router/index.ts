@@ -7,6 +7,7 @@ import PuntoVentaView from '../views/PuntoVentaView.vue'
 import TiendaOnlineView from '../views/TiendaOnlineView.vue'
 import BlogView from '../views/BlogView.vue'
 import PostDetalleView from '../views/PostDetalleView.vue'
+import DemoView from '../views/ContactoView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -68,11 +69,19 @@ const router = createRouter({
       }
     },
     {
+      path: '/contacto',
+      name: 'Contacto',
+      component: DemoView,
+      meta: {
+        title: 'Contacto - HaylliERP'
+      }
+    },
+    {
       path: '/blog',
       name: 'Blog',
       component: BlogView,
       meta: {
-        title: 'Tienda Online - HaylliERP'
+        title: 'Blog - HaylliERP'
       }
     },
     {

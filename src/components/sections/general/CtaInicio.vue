@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 </script>
 
 <template>
@@ -13,9 +16,8 @@
       <p class="price">Desde <strong>S/. 59,00</strong></p>
       
       <div class="action-buttons">
-        <router-link to="/planes" class="btn-primary-solid">Más información</router-link>
-        
-        <a href="#" class="btn-primary-solid">Agendar Demo Gratis</a>
+        <button class="btn-primary-solid" @click="router.push('/planes')">Más información</button>
+        <button class="btn-primary-solid" @click="router.push('/contacto')">Agendar Demo Gratis</button>
       </div>
     </div>
   </section>
@@ -81,6 +83,10 @@
   transition: all 0.3s ease;
   display: inline-block;
   box-shadow: 0 4px 10px rgba(0, 112, 187, 0.2);
+  /* Propiedades añadidas para que el <button> se vea como el <a> original */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .btn-primary-solid:hover {

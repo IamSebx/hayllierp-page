@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// Estamos asumiendo que seguiste la recomendación y moviste la imagen a src/assets/
 import DashboardHaylli from '../../../assets/Dashboard-Haylli.png'
 </script>
 
@@ -10,7 +9,6 @@ import DashboardHaylli from '../../../assets/Dashboard-Haylli.png'
       <div class="hero-content">
         <h1>Simplifica la gestión de tu empresa y factura en menos de un minuto</h1>
         <p>Optimiza la productividad y rentabilidad de tu negocio de forma intuitiva, reduciendo errores con la automatización de tus procesos empresariales.</p>
-        <button class="btn-primary">Más información</button>
       </div>
 
       <div class="hero-image">
@@ -26,9 +24,7 @@ import DashboardHaylli from '../../../assets/Dashboard-Haylli.png'
   background: linear-gradient(135deg, #006eb8 0%, #1ab1ef 100%);
   color: #ffffff;
   
-  /* AUMENTAMOS EL PADDING VERTICAL */
-  /* Antes estaba en '80px 20px', ahora lo subimos a '120px 20px' o más */
-  padding: 120px 20px 140px 20px; /* Arriba, Derecha, Abajo, Izquierda */
+  padding: 120px 20px 140px 20px; 
   
   font-family: 'Open Sans', sans-serif;
   overflow: hidden;

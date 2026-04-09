@@ -14,7 +14,7 @@ import imgInventario from '../../../assets/Persona-GestionInventario.png'
         </p>
         <div class="hero-actions">
           <router-link to="/planes" class="btn-primary">Ver planes</router-link>
-          <a href="#" class="btn-outline">Agendar Demo Gratis</a>
+          <router-link to="/contacto" class="btn-outline">Demostración Gratis</router-link>
         </div>
       </div>
 

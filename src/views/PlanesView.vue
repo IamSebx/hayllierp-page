@@ -4,6 +4,7 @@ import TrustedCompanies from '../components/sections/general/TrustedCompanies.vu
 import PricingGrid from '../components/sections/planes/PricingGrid.vue'
 // @ts-expect-error - local SFC module typing is not available for this file
 import ComparisonTable from '../components/sections/planes/ComparisonTable.vue'
+import FormularioContacto from '../components/sections/general/FormularioContacto.vue'
 import FaqSection from '../components/sections/planes/FaqSection.vue'
 import ContactBanner from '../components/sections/planes/ContactBanner.vue'
 </script>
@@ -14,6 +15,7 @@ import ContactBanner from '../components/sections/planes/ContactBanner.vue'
   <PricingGrid />
   <ComparisonTable />
   <ContactBanner />
+  <FormularioContacto />
   <TrustedCompanies />
   <FaqSection />
   </main>
