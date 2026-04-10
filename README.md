@@ -41,26 +41,6 @@ La app quedará disponible en `http://localhost:5173` (por defecto de Vite).
 - `/blog` Listado de artículos
 - `/blog/:slug` Detalle de artículo
 
-## Integraciones externas
-
-### Blog (WordPress REST API)
-
-- Listado: `GET https://hayllierp.creamosmarcati.com/wp-json/wp/v2/posts?_embed&per_page=6&page={n}`
-- Detalle: `GET https://hayllierp.creamosmarcati.com/wp-json/wp/v2/posts?slug={slug}&_embed`
-
-### Formularios de contacto
-
-- Endpoint: `POST https://hayllierp.creamosmarcati.com/wp-json/haylli/v1/contacto`
-- Payload enviado desde frontend:
-  - `nombre`
-  - `apellido`
-  - `email`
-  - `telefono`
-  - `ruc`
-  - `empresa`
-
-Nota: en UI el teléfono se muestra con prefijo visual `+51`, pero se envían solo los 9 dígitos ingresados por el usuario.
-
 ## Estructura base
 
 - `src/views/`: páginas por ruta.
