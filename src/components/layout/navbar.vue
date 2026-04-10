@@ -12,9 +12,9 @@ const isGestionOpen = ref(false)
     <div class="nav-container">
       
       <div class="nav-logo">
-        <a href="/">
+        <router-link to="/">
           <img :src="logoBlanco" alt="Haylli ERP Logo" class="logo-img" />
-        </a>
+        </router-link>
       </div>
 
       <div class="menu-toggle" @click="isMenuOpen = !isMenuOpen">

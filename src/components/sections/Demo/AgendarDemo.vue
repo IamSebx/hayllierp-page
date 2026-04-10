@@ -1,56 +1,10 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { useLeadForm } from '../../../composables/useLeadForm'
 
-const formulario = reactive({
-  nombreCompleto: '', // Unificado
-  celular: '',
-  email: ''
-})
-
-const cargando = ref(false)
-const mensaje = ref({ texto: '', tipo: '' })
-
-const filtrarNumeros = (evento: Event) => {
-  const input = evento.target as HTMLInputElement
-  formulario.celular = input.value.replace(/\D/g, '')
-}
+const { formulario, cargando, mensaje, correoInvalido, telefonoInvalido, filtrarNumeros, filtrarRuc, enviarFormulario } = useLeadForm()
 
 const enviarSolicitud = async () => {
-  if (!formulario.nombreCompleto || !formulario.celular || !formulario.email) {
-    mensaje.value = { texto: 'Por favor, completa todos los campos.', tipo: 'error' }
-    return
-  }
-
-  if (formulario.celular.length !== 9) {
-    mensaje.value = { texto: 'El celular debe tener 9 dígitos.', tipo: 'error' }
-    return
-  }
-
-  cargando.value = true
-  mensaje.value = { texto: '', tipo: '' }
-
-  try {
-    const respuesta = await fetch('https://hayllierp.creamosmarcati.com/wp-json/haylli/v1/contacto', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: formulario.email,
-        nombre: formulario.nombreCompleto, // Se envía el nombre completo aquí
-        telefono: formulario.celular
-      })
-    })
-
-    if (!respuesta.ok) throw new Error('Error al enviar')
-
-    mensaje.value = { texto: '¡Solicitud enviada con éxito!', tipo: 'exito' }
-    formulario.nombreCompleto = ''
-    formulario.celular = ''
-    formulario.email = ''
-  } catch (error) {
-    mensaje.value = { texto: 'Ocurrió un error. Inténtalo de nuevo.', tipo: 'error' }
-  } finally {
-    cargando.value = false
-  }
+  await enviarFormulario({ mensajeExito: '¡Solicitud enviada con éxito!' })
 }
 </script>
 
@@ -78,13 +32,32 @@ const enviarSolicitud = async () => {
             </div>
 
             <div class="grupo-input">
+              <label for="ruc">RUC</label>
+              <input type="text" id="ruc" v-model="formulario.ruc" @input="filtrarRuc" maxlength="11" placeholder="Ejemplo: 20123456789" :disabled="cargando" required>
+            </div>
+
+            <div class="grupo-input">
+              <label for="empresa">Nombre de la empresa</label>
+              <input type="text" id="empresa" v-model="formulario.empresa" placeholder="Ejemplo: Comercial ACME S.A.C." :disabled="cargando" required>
+            </div>
+
+            <div class="grupo-input">
               <label for="celular">Celular</label>
-              <input type="tel" id="celular" v-model="formulario.celular" @input="filtrarNumeros" maxlength="9" placeholder="Ejemplo: 985961235" :disabled="cargando" required>
+              <div class="input-prefix-wrap">
+                <span class="input-prefix">+51</span>
+                <input type="tel" id="celular" v-model="formulario.telefono" @input="filtrarNumeros" maxlength="9" placeholder="987654321" :disabled="cargando" required>
+              </div>
+              <span v-if="telefonoInvalido" class="input-warning">Ingrese correctamente el número (9 dígitos).</span>
             </div>
 
             <div class="grupo-input">
               <label for="email">E-mail</label>
               <input type="email" id="email" v-model="formulario.email" placeholder="Ejemplo: example@gmail.com" :disabled="cargando" required>
+              <span v-if="correoInvalido" class="input-warning">Ingrese correctamente el correo.</span>
+            </div>
+
+            <div v-if="mensaje.texto" :class="['alerta', `alerta-${mensaje.tipo}`]">
+              {{ mensaje.texto }}
             </div>
 
             <button type="submit" class="btn-enviar" :disabled="cargando">
@@ -202,6 +175,34 @@ const enviarSolicitud = async () => {
   box-sizing: border-box; /* Crucial para que el padding no desborde el input */
 }
 
+.input-prefix-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.input-prefix {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.input-prefix-wrap input {
+  padding-left: 52px;
+}
+
+.input-warning {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b91c1c;
+}
+
 .btn-enviar {
   background-color: #0073e6;
   color: white;
@@ -217,6 +218,26 @@ const enviarSolicitud = async () => {
 
 .btn-enviar:hover {
   background-color: #005bb5;
+}
+
+.alerta {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.alerta-exito {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.alerta-error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
 }
 
 /* --- EL PERSONAJE --- */

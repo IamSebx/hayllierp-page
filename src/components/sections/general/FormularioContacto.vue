@@ -1,69 +1,10 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { useLeadForm } from '../../../composables/useLeadForm'
 
-const formulario = reactive({
-  nombreCompleto: '',
-  telefono: '',
-  email: ''
-})
+const { formulario, cargando, mensaje, correoInvalido, telefonoInvalido, filtrarNumeros, filtrarRuc, enviarFormulario } = useLeadForm()
 
-const cargando = ref(false)
-const mensaje = ref({ texto: '', tipo: '' }) 
-
-// Función que limpia el campo de teléfono en tiempo real
-const filtrarNumeros = (evento: Event) => {
-  const input = evento.target as HTMLInputElement
-  // Reemplaza cualquier cosa que NO sea un número (\D) por vacío
-  formulario.telefono = input.value.replace(/\D/g, '')
-}
-
-const enviarFormulario = async () => {
-  // 1. Validación básica de campos vacíos
-  if (!formulario.nombreCompleto || !formulario.telefono || !formulario.email) {
-    mensaje.value = { texto: 'Por favor, completa todos los campos.', tipo: 'error' }
-    return
-  }
-
-  // 2. Validación de longitud del teléfono (exige que sean 9 sí o sí)
-  if (formulario.telefono.length !== 9) {
-    mensaje.value = { texto: 'El número de WhatsApp debe tener 9 dígitos.', tipo: 'error' }
-    return
-  }
-
-  cargando.value = true
-  mensaje.value = { texto: '', tipo: '' }
-
-  try {
-    const partesNombre = formulario.nombreCompleto.trim().split(' ')
-    const nombre = partesNombre[0] || ''
-    const apellido = partesNombre.slice(1).join(' ') || ''
-
-    const respuesta = await fetch('https://hayllierp.creamosmarcati.com/wp-json/haylli/v1/contacto', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: formulario.email,
-        nombre: nombre,
-        apellido: apellido,
-        telefono: formulario.telefono
-      })
-    })
-
-    if (!respuesta.ok) throw new Error('Error en la red')
-
-    mensaje.value = { texto: '¡Gracias! Te contactaremos por WhatsApp pronto.', tipo: 'exito' }
-    formulario.nombreCompleto = ''
-    formulario.telefono = ''
-    formulario.email = ''
-
-  } catch (error) {
-    console.error('Error al enviar lead:', error)
-    mensaje.value = { texto: 'Ocurrió un problema al enviar tus datos. Intenta nuevamente.', tipo: 'error' }
-  } finally {
-    cargando.value = false
-  }
+const enviarFormularioContacto = async () => {
+  await enviarFormulario()
 }
 </script>
 
@@ -81,7 +22,7 @@ const enviarFormulario = async () => {
           <p>Completa correctamente tus datos para enviarte la información a tu WhatsApp</p>
         </div>
 
-        <form @submit.prevent="enviarFormulario" class="formulario">
+        <form @submit.prevent="enviarFormularioContacto" class="formulario">
           
           <div class="grupo-input">
             <label for="nombre">Nombre Completo</label>
@@ -96,17 +37,47 @@ const enviarFormulario = async () => {
           </div>
 
           <div class="grupo-input">
-            <label for="whatsapp">Número de WhatsApp</label>
-            <input 
-              type="tel" 
-              id="whatsapp" 
-              v-model="formulario.telefono" 
-              @input="filtrarNumeros"
-              maxlength="9"
-              placeholder="Ejemplo: 987654321"
+            <label for="ruc">RUC</label>
+            <input
+              type="text"
+              id="ruc"
+              v-model="formulario.ruc"
+              @input="filtrarRuc"
+              maxlength="11"
+              placeholder="Ejemplo: 20123456789"
               :disabled="cargando"
               required
             >
+          </div>
+
+          <div class="grupo-input">
+            <label for="empresa">Nombre de la empresa</label>
+            <input
+              type="text"
+              id="empresa"
+              v-model="formulario.empresa"
+              placeholder="Ejemplo: Comercial ACME S.A.C."
+              :disabled="cargando"
+              required
+            >
+          </div>
+
+          <div class="grupo-input">
+            <label for="whatsapp">Número de WhatsApp</label>
+            <div class="input-prefix-wrap">
+              <span class="input-prefix">+51</span>
+              <input 
+                type="tel" 
+                id="whatsapp" 
+                v-model="formulario.telefono" 
+                @input="filtrarNumeros"
+                maxlength="9"
+                placeholder="987654321"
+                :disabled="cargando"
+                required
+              >
+            </div>
+            <span v-if="telefonoInvalido" class="input-warning">Ingrese correctamente el número (9 dígitos).</span>
           </div>
 
           <div class="grupo-input">
@@ -119,6 +90,7 @@ const enviarFormulario = async () => {
               :disabled="cargando"
               required
             >
+            <span v-if="correoInvalido" class="input-warning">Ingrese correctamente el correo.</span>
           </div>
 
           <div v-if="mensaje.texto" :class="['alerta', `alerta-${mensaje.tipo}`]">
@@ -269,6 +241,36 @@ const enviarFormulario = async () => {
 .grupo-input input:disabled {
   background-color: #f1f5f9;
   cursor: not-allowed;
+}
+
+.input-prefix-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.input-prefix {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.input-prefix-wrap input {
+  width: 100%;
+  padding-left: 52px;
+  box-sizing: border-box;
+}
+
+.input-warning {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b91c1c;
 }
 
 .btn-enviar {

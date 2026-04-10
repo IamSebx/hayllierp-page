@@ -7,7 +7,7 @@ import PuntoVentaView from '../views/PuntoVentaView.vue'
 import TiendaOnlineView from '../views/TiendaOnlineView.vue'
 import BlogView from '../views/BlogView.vue'
 import PostDetalleView from '../views/PostDetalleView.vue'
-import DemoView from '../views/ContactoView.vue'
+import ContactoView from '../views/ContactoView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -45,16 +45,8 @@ const router = createRouter({
       }
     },
     {
-      path: '/inventario',
-      name: 'inventario',
-      component: InventarioView,
-      meta: {
-        title: 'Inventario - HaylliERP'
-      }
-    },
-    {
       path: '/pos',
-      name: 'Punto de Venta',
+      name: 'pos',
       component: PuntoVentaView,
       meta: {
         title: 'Punto de Venta (POS) - HaylliERP'
@@ -62,7 +54,7 @@ const router = createRouter({
     },
     {
       path: '/tienda-online',
-      name: 'Tienda Online',
+      name: 'tienda-online',
       component: TiendaOnlineView,
       meta: {
         title: 'Tienda Online - HaylliERP'
@@ -70,26 +62,25 @@ const router = createRouter({
     },
     {
       path: '/contacto',
-      name: 'Contacto',
-      component: DemoView,
+      name: 'contacto',
+      component: ContactoView,
       meta: {
         title: 'Contacto - HaylliERP'
       }
     },
     {
       path: '/blog',
-      name: 'Blog',
+      name: 'blog',
       component: BlogView,
       meta: {
         title: 'Blog - HaylliERP'
       }
     },
     {
-    // El :slug indica que es una variable dinámica
-    path: '/blog/:slug', 
-    name: 'PostDetalle',
-    component: PostDetalleView
-  }
+      path: '/blog/:slug',
+      name: 'blog-detalle',
+      component: PostDetalleView
+    }
   ],
   scrollBehavior() {
     return { top: 0 }
