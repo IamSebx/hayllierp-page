@@ -17,7 +17,7 @@ const companies = [
     <div class="trusted-container">
       
       <div class="trusted-text">
-        <p>Empresas que confían en nosotros</p>
+        <p>Más de +200 empresas que confían en nosotros</p>
       </div>
       
       <div class="carousel-wrapper">
