@@ -1,17 +1,26 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import type { WpPost } from '../types/wordpress'
 
 const route = useRoute()
-const post = ref<any>(null)
+const post = ref<WpPost | null>(null)
 const cargando = ref(true)
 
 const obtenerPostCompleto = async () => {
   try {
-    const slug = route.params.slug
+    const slugParam = route.params.slug
+    const slug = Array.isArray(slugParam) ? slugParam[0] : slugParam
+
+    if (!slug) {
+      post.value = null
+      return
+    }
     
     const respuesta = await fetch(`https://hayllierp.creamosmarcati.com/wp-json/wp/v2/posts?slug=${slug}&_embed`)
-    const data = await respuesta.json()
+    if (!respuesta.ok) throw new Error('Error en la red')
+
+    const data: WpPost[] = await respuesta.json()
     
     if (data.length > 0) {
       post.value = data[0]

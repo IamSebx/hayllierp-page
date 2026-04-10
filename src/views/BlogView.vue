@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import type { WpPost } from '../types/wordpress'
 
-const articulos = ref<any[]>([])
+const articulos = ref<WpPost[]>([])
 const cargando = ref(true)
 const errorPeticion = ref(false)
 
@@ -19,10 +20,10 @@ const obtenerArticulos = async () => {
     
     const totalPagesHeader = respuesta.headers.get('X-WP-TotalPages')
     if (totalPagesHeader) {
-      totalPaginas.value = parseInt(totalPagesHeader)
+      totalPaginas.value = parseInt(totalPagesHeader, 10)
     }
     
-    const data = await respuesta.json()
+    const data: WpPost[] = await respuesta.json()
     articulos.value = data
     
     window.scrollTo({ top: 0, behavior: 'smooth' })

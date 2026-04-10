@@ -2,7 +2,6 @@
 import PricingHero from '../components/sections/planes/PricingHero.vue'
 import TrustedCompanies from '../components/sections/general/TrustedCompanies.vue'
 import PricingGrid from '../components/sections/planes/PricingGrid.vue'
-// @ts-expect-error - local SFC module typing is not available for this file
 import ComparisonTable from '../components/sections/planes/ComparisonTable.vue'
 import FormularioContacto from '../components/sections/general/FormularioContacto.vue'
 import FaqSection from '../components/sections/planes/FaqSection.vue'
