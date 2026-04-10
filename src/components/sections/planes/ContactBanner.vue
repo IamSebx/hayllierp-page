@@ -8,7 +8,7 @@
     
     <div class="haylli-cta-buttons">
       <router-link to="/contacto" class="haylli-btn-dark">Demostración Gratis</router-link>
-      <a href="https://wa.me/51958453208?text=Hola,%20quiero%20personalizar%20mi%20plan" target="_blank" class="haylli-btn-dark">Personalizar plan</a>
+      <a href="https://wa.me/51958453208?text=Hola,%20quiero%20personalizar%20mi%20plan" target="_blank" class="haylli-btn-dark">Hablar con ventas</a>
     </div>
   </div>
 </template>

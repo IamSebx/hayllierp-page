@@ -6,6 +6,7 @@ import ComparisonTable from '../components/sections/planes/ComparisonTable.vue'
 import FormularioContacto from '../components/sections/general/FormularioContacto.vue'
 import FaqSection from '../components/sections/planes/FaqSection.vue'
 import ContactBanner from '../components/sections/planes/ContactBanner.vue'
+import TestimonioClients from '../components/sections/general/TestimonioClients.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import ContactBanner from '../components/sections/planes/ContactBanner.vue'
   <ContactBanner />
   <FormularioContacto />
   <TrustedCompanies />
+  <TestimonioClients />
   <FaqSection />
   </main>
 </template>
